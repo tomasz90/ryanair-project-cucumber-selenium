@@ -1,7 +1,12 @@
 package pageobjects;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.FileInputStream;
@@ -13,9 +18,23 @@ import java.util.concurrent.TimeUnit;
 public class TestBase {
 
     private static WebDriver driver;
+
+    public static WebDriverWait getWait() {
+        return wait;
+    }
+
     private static WebDriverWait wait;
+
+    public static Properties getDriverConfig() {
+        return driverConfig;
+    }
+
+    public static Properties getWebConfig() {
+        return webConfig;
+    }
+
     private static Properties driverConfig = new Properties();
-    protected static Properties webConfig = new Properties();
+    private static Properties webConfig = new Properties();
 
     static {
         try {
@@ -55,5 +74,29 @@ public class TestBase {
             driver.manage().timeouts().pageLoadTimeout(Long.valueOf(driverConfig.getProperty("page_load_wait")), TimeUnit.SECONDS);
             driver.manage().timeouts().implicitlyWait(Long.valueOf(driverConfig.getProperty("implicitly_wait")), TimeUnit.SECONDS);
             wait = new WebDriverWait(driver, Long.valueOf(driverConfig.getProperty("explicitly_wait")));
+    }
+
+    protected static WebElement findElementQuietly(By by) {
+        return findElementQuietly(by, Long.valueOf(driverConfig.getProperty("explicitly_wait")));
+    }
+
+    protected static WebElement findElementQuietly(By by, long timeOut) {
+        try {
+            wait = new WebDriverWait(driver, timeOut);
+            WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(by));
+            return element;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    protected static void waitForBeingReady(){
+        new WebDriverWait(getDriver(), 3).until((ExpectedCondition<Boolean>) wd ->
+                ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
+    }
+
+    protected WebElement waitForBeingClickable(By by){
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
+        return element;
     }
 }
