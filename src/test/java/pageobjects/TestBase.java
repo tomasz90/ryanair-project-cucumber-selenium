@@ -27,26 +27,32 @@ public class TestBase extends PageFactory {
     private static Pair<Properties, String> driverConfig = new Pair<>(new Properties(), "src/test/resources/properties/driver-config.properties");
     private static Pair<Properties, String> testConfig = new Pair<>(new Properties(), "src/test/resources/properties/test-data.properties");
     private static Pair<Properties, String> log4j = new Pair<>(new Properties(), "src/test/resources/properties/log4j.properties");
+    private static Pair<Properties, String> output = new Pair<>(new Properties(), "src/test/resources/properties/test-output.properties");
 
     private static Properties getDriverProperties() {
         return driverConfig.getProperties();
     }
+
     public static Properties getTestProperties() {
         return testConfig.getProperties();
+    }
+    public static Properties getOutputProperties() {
+        return output.getProperties();
     }
     public static WebDriverWait getWait() {
         return wait;
     }
-    public static WebDriverWait getCustomWait(int timeOut){
+
+    public static WebDriverWait getCustomWait(int timeOut) {
         return new WebDriverWait(getDriver(), timeOut);
     }
 
 
     public static void loadProperties() throws IOException {
-        PropertiesManager.load(driverConfig, testConfig, log4j);
+        PropertiesManager.load(driverConfig, testConfig, output, log4j);
     }
 
-    public static void loadLogger(){
+    public static void loadLogger() {
         PropertyConfigurator.configure(log4j.getProperties());
     }
 

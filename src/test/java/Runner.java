@@ -1,13 +1,13 @@
 import cucumber.api.CucumberOptions;
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
 import cucumber.api.junit.Cucumber;
-import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import pageobjects.TestBase;
+import utilities.ScreenshotTaker;
 
 import java.io.IOException;
-
-import static pageobjects.TestBase.getDriver;
 
 
 @RunWith(Cucumber.class)
@@ -18,11 +18,5 @@ public class Runner {
     public static void setUp() throws IOException {
         TestBase.loadProperties();
         TestBase.loadLogger();
-
-    }
-
-    @AfterClass
-    public static void tearDown(){
-        getDriver().quit();
     }
 }

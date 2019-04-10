@@ -48,7 +48,6 @@ public class MyStepdefs {
         homePage.clickPassengerDDM();
         homePage.acceptTermsOfUse();
         homePage.clickLetsFly();
-        assertTrue("Choose flight page wasn't loaded", chooseFlightPage.isLoaded());
     }
 
     @And("I choose the following options: flight with standard fare, small bags, random seats")
@@ -56,13 +55,9 @@ public class MyStepdefs {
         chooseFlightPage.chooseDisplayedFlight();
         chooseFlightPage.chooseStandardFare();
         chooseFlightPage.clickContinue();
-        assertTrue("Bag options page was't loaded", bagOptionsPage.isLoaded());
-
         bagOptionsPage.chooseSmallBag();
         bagOptionsPage.ifPopUpDisplayedChooseTheSameForAll();
         bagOptionsPage.clickContinue();
-        assertTrue("Choose options page wasn't loaded", chooseOptionsPage.isLoaded());
-
         chooseOptionsPage.ifPopUpDisplayedDismiss();
         chooseOptionsPage.chooseRandomSeats(homePage.getPassengerInfo());
         chooseOptionsPage.reviewSeats();
