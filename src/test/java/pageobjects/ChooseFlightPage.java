@@ -1,36 +1,36 @@
 package pageobjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.Arrays;
 
 public class ChooseFlightPage extends TestBase {
 
-    private static final By calendarCarousel = By.cssSelector(".base-carousel");
-    private static final By priceButton = By.cssSelector(".flight-header__min-price .flights-table-price");
-    private static final By standardFare = By.cssSelector(".flights-table-fares > div > div:nth-child(1) flights-table-price");
-    private static final By continueButton = By.cssSelector(".cart .trips-basket.trips-cnt");
-    private static final By addedToBasketPopUp = By.cssSelector(".basket-message__popup");
-    private static final By spinningPlane = By.cssSelector(".flights-table-fares .plane-spinner");
+    @FindBy(css=".base-carousel") private WebElement  calendarCarousel;
+    @FindBy(css=".flight-header__min-price .flights-table-price") private WebElement   priceButton;
+    @FindBy(css=".flights-table-fares > div > div:nth-child(1) flights-table-price") private WebElement standardFare;
+    @FindBy(css=".cart .trips-basket.trips-cnt") private WebElement continueButton;
+    @FindBy(css=".basket-message__popup") private WebElement addedToBasketPopUp;
+    @FindBy(css=".flights-table-fares .plane-spinner") private WebElement spinningPlane;
 
     public boolean isLoaded() {
-        return getDriver().findElement(calendarCarousel).isDisplayed();
+        return calendarCarousel.isDisplayed();
     }
 
     public void chooseDisplayedFlight() {
-        getDriver().findElement(priceButton).click();
+        priceButton.click();
     }
 
     public void chooseStandardFare() {
-        //getWait().until(ExpectedConditions.invisibilityOfElementLocated(priceButton));
-        getWait().until(ExpectedConditions.invisibilityOfElementLocated(spinningPlane));
-        WebElement element = getDriver().findElement(standardFare);
+        getWait().until(ExpectedConditions.invisibilityOfAllElements(Arrays.asList(spinningPlane)));
+        WebElement element = standardFare;
         element.click();
     }
 
     public void clickContinue() {
-        getWait().until(ExpectedConditions.visibilityOfElementLocated(addedToBasketPopUp));
-        getDriver().findElement(continueButton).click();
+        getWait().until(ExpectedConditions.visibilityOf(addedToBasketPopUp));
+        continueButton.click();
     }
 }

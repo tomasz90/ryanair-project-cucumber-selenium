@@ -3,20 +3,22 @@ package stepdefs;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.support.PageFactory;
 import pageobjects.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static pageobjects.TestBase.getDriver;
 import static pageobjects.TestBase.getTestProperties;
 
 public class MyStepdefs {
 
-    private HomePage homePage = new HomePage();
-    private LoginPopUp loginPopUp = new LoginPopUp();
-    private ChooseFlightPage chooseFlightPage = new ChooseFlightPage();
-    private BagOptionsPage bagOptionsPage = new BagOptionsPage();
-    private ChooseOptionsPage chooseOptionsPage = new ChooseOptionsPage();
-    private CheckoutPage checkoutPage = new CheckoutPage();
+    private HomePage homePage = PageFactory.initElements(getDriver(), HomePage.class);
+    private LoginPopUp loginPopUp = PageFactory.initElements(getDriver(), LoginPopUp.class);
+    private ChooseFlightPage chooseFlightPage = PageFactory.initElements(getDriver(), ChooseFlightPage.class);
+    private BagOptionsPage bagOptionsPage = PageFactory.initElements(getDriver(), BagOptionsPage.class);
+    private ChooseOptionsPage chooseOptionsPage = PageFactory.initElements(getDriver(), ChooseOptionsPage.class);
+    private CheckoutPage checkoutPage = PageFactory.initElements(getDriver(), CheckoutPage.class);
 
     @When("I navigate to home page and login into test account")
     public void iNavigateToHomePage() {
@@ -49,16 +51,6 @@ public class MyStepdefs {
         assertTrue("Choose flight page wasn't loaded", chooseFlightPage.isLoaded());
     }
 
-    @And("I provide personal info and pay for booking with card details ([0-9]+ [0-9]+ [0-9]+ [0-9]+), (\\d\\d)/(\\d\\d) and (\\d\\d\\d)")
-    public void iPayForBookingWithCardDetails(String ccNo, String expiryMonth, String expiryYear, String cvv) {
-        checkoutPage.providePersonalData(homePage.getPassengerInfo());
-        checkoutPage.providePhoneData();
-        checkoutPage.provideCCData(ccNo, expiryMonth, expiryYear, cvv);
-        checkoutPage.provideAddressData();
-        checkoutPage.acceptTerms();
-        checkoutPage.clickPayNow();
-    }
-
     @And("I choose the following options: flight with standard fare, small bags, random seats")
     public void iChooseTheFollowingOptionsFlightWithStandardFareSmallBagsRandomSeats() {
         chooseFlightPage.chooseDisplayedFlight();
@@ -82,6 +74,16 @@ public class MyStepdefs {
     @Then("I should be on checkout page")
     public void iShouldBeOnCheckoutPage() {
         assertTrue("Checkout page wasn't loaded", checkoutPage.isLoaded());
+    }
+
+    @And("I provide personal info and pay for booking with card details ([0-9]+ [0-9]+ [0-9]+ [0-9]+), (\\d\\d)/(\\d\\d) and (\\d\\d\\d)")
+    public void iPayForBookingWithCardDetails(String ccNo, String expiryMonth, String expiryYear, String cvv) {
+        checkoutPage.providePersonalData(homePage.getPassengerInfo());
+        checkoutPage.providePhoneData();
+        checkoutPage.provideCCData(ccNo, expiryMonth, expiryYear, cvv);
+        checkoutPage.provideAddressData();
+        checkoutPage.acceptTerms();
+        checkoutPage.clickPayNow();
     }
 
     @Then("I should get payment declined message")

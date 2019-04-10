@@ -1,68 +1,62 @@
 package pageobjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
 public class ChooseOptionsPage extends TestBase {
-    private static final By seatDialog = By.cssSelector(".seat-map-header");
-    private static final By randomSeatButton = By.cssSelector("[translate=\"trips.seats.modal.skip\"]");
-    private static final By checkoutButton = By.cssSelector(".trips-basket.trips-cnt");
-    private static final By rightPane = By.id("dialog-body-slot");
-    private static final By confirmSeatsButton = By.cssSelector("[class=\"core-btn-primary dialog-overlay-footer__ok-button\"] span:nth-child(2)");
-    private static final By standardSeats = By.cssSelector("[class=\"seat-row-seat standard\"]");
-    private static final By passengers = By.cssSelector("core-carousel-slide");
-    private static final By popUpConfirmButton = By.cssSelector("[ng-switch-when=\"mandatory-seats\"] button");
-    private static final By reviewSeatsButton = By.cssSelector("[translate=\"trips.seats.seatmap_review-seats\"]");
-    private static final By noThanksButton = By.cssSelector(".popup-msg__button.popup-msg__button--cancel");
-    private static final By seatsLegend = By.cssSelector(".sm-legend");
-    private static final By seatMapPrompt = By.cssSelector(".seat-map-prompt-backdrop");
-    private static final By confirmSeatsTitle = By.cssSelector(".confirm-seats-title");
+
+    @FindBy(css = ".seat-map-header") private WebElement seatDialog;
+    @FindBy(css = ".trips-basket.trips-cnt") private WebElement checkoutButton;
+    @FindBy(css = "[class=\"core-btn-primary dialog-overlay-footer__ok-button\"] span:nth-child(2)") private WebElement confirmSeatsButton;
+    @FindBy(css = "[class=\"seat-row-seat standard\"]") private List<WebElement> standardSeats;
+    @FindBy(css = "[ng-switch-when=\"mandatory-seats\"] button") private WebElement popUpConfirmButton;
+    @FindBy(css = "[translate=\"trips.seats.seatmap_review-seats\"]") private WebElement reviewSeatsButton;
+    @FindBy(css = ".popup-msg__button.popup-msg__button--cancel") private WebElement noThanksButton;
+    @FindBy(css = ".seat-map-prompt-backdrop") private WebElement seatMapPrompt;
+    @FindBy(css = ".confirm-seats-title") private WebElement confirmSeatTitle;
+    @FindBy(css = ".seat-map-scrolling-body .seat-map") private WebElement scrollingArea;
 
     public boolean isLoaded() {
-        return getDriver().findElement(seatDialog).isDisplayed();
+        return seatDialog.isDisplayed();
     }
 
     public void ifPopUpDisplayedDismiss() {
-        WebElement element;
-        if ((element = findElementQuietly(popUpConfirmButton)) != null) {
-            element.click();
+        if (popUpConfirmButton != null) {
+            popUpConfirmButton.click();
         }
     }
 
-    public void chooseRandomSeats(HashMap<String, Integer> map) {
-        List<WebElement> standardSeatsElements = getDriver().findElements(standardSeats);
-        Collections.reverse(standardSeatsElements);
-        getWait().until(ExpectedConditions.invisibilityOfElementLocated(seatMapPrompt));
-        int paidSeats = map.get("adults");
-        for (int seat = 0; seat < paidSeats; seat++) {
-            WebElement element = standardSeatsElements.get(seat);
-            element.click();
+    public void chooseRandomSeats(HashMap<String, Integer> passengersInfo) {
+        getWait().until(ExpectedConditions.invisibilityOfAllElements(Arrays.asList(seatMapPrompt)));
+        int paidSeats = passengersInfo.get("adults");
+        int lastSeat = standardSeats.size()-1;
+        for (int seat = lastSeat; seat > lastSeat - paidSeats; seat--) {
+            standardSeats.get(seat).click();
         }
     }
 
-    public void reviewSeats(){
-        getDriver().findElement(reviewSeatsButton).click();
+    public void reviewSeats() {
+        reviewSeatsButton.click();
     }
 
     public void confirmSeats() {
-        getWait().until(ExpectedConditions.invisibilityOfElementLocated(reviewSeatsButton));
-        getDriver().findElement(confirmSeatsButton).click();
+        getWait().until(ExpectedConditions.invisibilityOfAllElements(Arrays.asList(reviewSeatsButton)));
+        confirmSeatsButton.click();
     }
 
-    public void clickCheckout()  {
-        getWait().until(ExpectedConditions.invisibilityOfElementLocated(confirmSeatsTitle));
-        getDriver().findElement(checkoutButton).click();
+    public void clickCheckout() {
+        getCustomWait(5).until(ExpectedConditions.invisibilityOfAllElements(Arrays.asList(confirmSeatTitle)));
+        checkoutButton.click();
     }
 
-    public void ifCarHireOptionDisplayedDismiss(){
-        WebElement element;
-        if((element = findElementQuietly(noThanksButton))!=null)
-        element.click();
+    public void ifCarHireOptionDisplayedDismiss() {
+        if (noThanksButton != null) {
+            noThanksButton.click();
+        }
     }
 }

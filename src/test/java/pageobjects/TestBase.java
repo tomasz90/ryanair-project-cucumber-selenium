@@ -5,6 +5,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -13,11 +14,10 @@ import utilities.Pair;
 import utilities.PropertiesManager;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-public class TestBase {
+public class TestBase extends PageFactory {
 
     private static WebDriver driver;
     private static WebDriverWait wait;
@@ -73,18 +73,5 @@ public class TestBase {
     protected static void waitForBeingReady() {
         getWait().until((ExpectedCondition<Boolean>) wd ->
                 ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
-    }
-
-    protected WebElement waitForBeingClickable(By by) {
-        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
-        return element;
-    }
-
-    protected WebElement findDynamicElement(By by) {
-        return wait.until(ExpectedConditions.presenceOfElementLocated(by));
-    }
-
-    protected List<WebElement> findDynamicElements(By by) {
-        return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
     }
 }

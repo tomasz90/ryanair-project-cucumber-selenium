@@ -1,29 +1,32 @@
 package pageobjects;
 
-import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.Arrays;
 
 public class LoginPopUp extends TestBase {
 
-    private static final By emailInput = By.cssSelector(".modal-right [type=email]");
-    private static final By passwordInput = By.cssSelector(".modal-right [type=password]");
-    private static final By submitButton = By.cssSelector(".modal-right [type=submit]");
-    private static final By popUp = By.cssSelector(".modal-right");
+    @FindBy(css=".modal-right [type=email]") private WebElement emailinput;
+    @FindBy(css=".modal-right [type=password]") private WebElement passwordinput;
+    @FindBy(css=".modal-right [type=submit]") private WebElement submitbutton;
+    @FindBy(css=".modal-right") private WebElement popup;
 
     public void enterEmail(String email) {
-        getDriver().findElement(emailInput).sendKeys(email);
+        emailinput.sendKeys(email);
     }
 
     public void enterPassword(String password) {
-        getDriver().findElement(passwordInput).sendKeys(password);
+        passwordinput.sendKeys(password);
     }
 
     public void submit() {
-        getDriver().findElement(submitButton).click();
+        submitbutton.click();
         waitForPopUpDisappear();
     }
 
     private void waitForPopUpDisappear(){
-        getWait().until(ExpectedConditions.invisibilityOfElementLocated(popUp));
+        getWait().until(ExpectedConditions.invisibilityOfAllElements(Arrays.asList(popup)));
     }
 }

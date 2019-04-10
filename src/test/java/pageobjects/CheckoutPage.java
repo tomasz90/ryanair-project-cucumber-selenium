@@ -1,99 +1,90 @@
 package pageobjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class CheckoutPage extends TestBase {
 
-    private static final By passengerForm = By.cssSelector(".passengers-form .body");
-    private static final By titleDDMs = By.cssSelector(".payment-passenger-title .core-select select");
-    private static final By firstName = By.cssSelector(".payment-passenger-first-name input");
-    private static final By lastName = By.cssSelector(".payment-passenger-last-name input");
-    private static final By countryPhoneDDM = By.cssSelector("[name=\"phoneNumberCountry\"]");
-    private static final By phoneInput = By.cssSelector(".phone-number input");
+    @FindBy(css=".passengers-form .body") private WebElement passengerForm;
+    @FindBy(css=".payment-passenger-title .core-select select") private List<WebElement> titleDDMs;
+    @FindBy(css=".payment-passenger-first-name input") private List<WebElement> firstNames;
+    @FindBy(css=".payment-passenger-last-name input") private List<WebElement> lastNames;
+    @FindBy(css="[name=\"phoneNumberCountry\"]") private WebElement countryPhoneDDM;
+    @FindBy(css=".phone-number input") private WebElement phoneInput;
 
-    private static final By ccNoInput = By.cssSelector("payment-method-card > div > input:nth-child(2)");
-    private static final By expiryMonthDDM = By.cssSelector(".expiry-month-select");
-    private static final By expiryYearDDM = By.cssSelector(".expiry-year-select");
+    @FindBy(css="payment-method-card > div > input:nth-child(2)")private WebElement ccNoInput;
+    @FindBy(css=".expiry-month-select")private WebElement expiryMonthDDM;
+    @FindBy(css=".expiry-year-select")private WebElement expiryYearDDM;
+    @FindBy(css=".card-security-code input")private WebElement cvvInput;
+    @FindBy(css=".cardholders-name input")private WebElement cardholderInput;
 
-    private static final By cvvInput = By.cssSelector(".card-security-code input");
-    private static final By cardholderInput = By.cssSelector(".cardholders-name input");
-
-
-    private static final By address1Input = By.id("billingAddressAddressLine1");
-    private static final By cityInput = By.id("billingAddressCity");
-    private static final By zipInput = By.id("billingAddressPostcode");
-    private static final By countryDDM = By.id("billingAddressCountry");
-    private static final By termsAndConditionsCheckbox = By.cssSelector(".terms core-icon");
-    private static final By payNowButton = By.cssSelector(".core-btn-primary.core-btn-medium");
-    private static final By errorMessageText = By.cssSelector("[text-title=\"common.components.payment_forms.error_title\"] .info-text");
-    private static final By processingAnimation = By.cssSelector(".box .plane-spinner");
+    @FindBy(id="billingAddressAddressLine1")private WebElement address1Input;
+    @FindBy(id="billingAddressCity")private WebElement cityInput;
+    @FindBy(id="billingAddressPostcode")private WebElement zipInput;
+    @FindBy(id="billingAddressCountry")private WebElement countryDDM;
+    @FindBy(css=".terms core-icon")private WebElement termsAndConditionsCheckbox;
+    @FindBy(css=".core-btn-primary.core-btn-medium")private WebElement payNowButton;
+    @FindBy(css="[text-title=\"common.components.payment_forms.error_title\"] .info-text")private WebElement errorMessageText;
+    @FindBy(css=".box .plane-spinner")private WebElement processingAnimation;
 
     public boolean isLoaded() {
-        return getDriver().findElement(passengerForm).isDisplayed();
+        return passengerForm.isDisplayed();
     }
 
     public void providePersonalData(HashMap<String, Integer> map) {
-
-        List<WebElement> ddms = getDriver().findElements(titleDDMs);
-        List<WebElement> firstNames = getDriver().findElements(firstName);
-        List<WebElement> lastNames = getDriver().findElements(lastName);
 
         for (int i = 0; i < firstNames.size(); i++) {
             firstNames.get(i).sendKeys(getRandomData("passenger_first_names"));
             lastNames.get(i).sendKeys(getRandomData("passenger_last_names"));
         }
 
-        for (int i = 0; i < ddms.size(); i++) {
-            Select titleDDM = new Select(ddms.get(i));
+        for (int i = 0; i < titleDDMs.size(); i++) {
+            Select titleDDM = new Select(titleDDMs.get(i));
             titleDDM.selectByVisibleText("Mrs");
         }
     }
 
     public void providePhoneData() {
-        Select ddm = new Select(getDriver().findElement(countryPhoneDDM));
+        Select ddm = new Select(countryPhoneDDM);
         ddm.selectByVisibleText(getRandomData("phone_country"));
-        getDriver().findElement(phoneInput).sendKeys(getRandomData("phone_no"));
+        phoneInput.sendKeys(getRandomData("phone_no"));
     }
 
     public void provideAddressData() {
-        getDriver().findElement(address1Input).sendKeys(getRandomData("address_1"));
-        getDriver().findElement(cityInput).sendKeys(getRandomData("city"));
-        getDriver().findElement(zipInput).sendKeys(getRandomData("zip_code"));
-        Select ddm = new Select(getDriver().findElement(countryDDM));
+        address1Input.sendKeys(getRandomData("address_1"));
+        cityInput.sendKeys(getRandomData("city"));
+        zipInput.sendKeys(getRandomData("zip_code"));
+        Select ddm = new Select(countryDDM);
         ddm.selectByVisibleText(getRandomData("country"));
 
     }
 
     public void provideCCData(String ccNo, String expiryMonth, String expiryYear, String cvv) {
-        getDriver().findElement(ccNoInput).sendKeys(ccNo.replace(" ", ""));
-        Select select = new Select(getDriver().findElement(expiryMonthDDM));
+        ccNoInput.sendKeys(ccNo.replace(" ", ""));
+        Select select = new Select(expiryMonthDDM);
         select.selectByVisibleText(String.valueOf(Integer.valueOf(expiryMonth)));
-        select = new Select(getDriver().findElement(expiryYearDDM));
+        select = new Select(expiryYearDDM);
         select.selectByVisibleText("20" + expiryYear);
-        getDriver().findElement(cvvInput).sendKeys(cvv);
-        getDriver().findElement(cardholderInput).sendKeys("test name");
+        cvvInput.sendKeys(cvv);
+        cardholderInput.sendKeys("test name");
 
     }
 
     public void acceptTerms() {
-        getDriver().findElement(termsAndConditionsCheckbox).click();
+        termsAndConditionsCheckbox.click();
     }
 
     public String getErrorMessage() {
-        getCustomWait(10).until(ExpectedConditions.invisibilityOfElementLocated(processingAnimation));
-        return getDriver().findElement(errorMessageText).getText();
+        getCustomWait(10).until(ExpectedConditions.invisibilityOfAllElements(Arrays.asList(processingAnimation)));
+        return errorMessageText.getText();
     }
 
     public void clickPayNow() {
-        getDriver().findElement(payNowButton).click();
+        payNowButton.click();
     }
 
     private String getRandomData(String key) {

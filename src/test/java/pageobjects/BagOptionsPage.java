@@ -1,31 +1,32 @@
 package pageobjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.Arrays;
 
 public class BagOptionsPage extends TestBase {
 
-    private static final By smallBagOption = By.cssSelector("priority-cabin-bag-card:nth-child(1) .pb-cb-standalone-card");
-    private static final By continueButton = By.cssSelector(".cart .trips-basket.trips-cnt");
-    private static final By theSameButton = By.cssSelector("[translate=\"trips.booking.priority.same-for-all.yes\"]");
+    @FindBy(css="priority-cabin-bag-card:nth-child(1) .pb-cb-standalone-card") private WebElement smallBagOption;
+    @FindBy(css=".cart .trips-basket.trips-cnt") private WebElement continueButton;
+    @FindBy(css="[translate=\"trips.booking.priority.same-for-all.yes\"]") private WebElement theSameButton;
 
     public boolean isLoaded() {
-        return getDriver().findElement(smallBagOption).isDisplayed();
+        return smallBagOption.isDisplayed();
     }
     public void chooseSmallBag(){
-        getDriver().findElement(smallBagOption).click();
+        smallBagOption.click();
     }
 
     public void ifPopUpDisplayedChooseTheSameForAll(){
-        WebElement element;
-        if((element = findElementQuietly(theSameButton))!=null){
-            element.click();
+        if(theSameButton!=null){
+           theSameButton.click();
         }
     }
 
     public void clickContinue(){
-        getWait().until(ExpectedConditions.invisibilityOfElementLocated(theSameButton));
-        getDriver().findElement(continueButton).click();
+        getWait().until(ExpectedConditions.invisibilityOfAllElements(Arrays.asList(theSameButton)));
+        continueButton.click();
     }
 }
