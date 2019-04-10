@@ -1,5 +1,7 @@
 package pageobjects;
 
+import lombok.extern.log4j.Log4j;
+import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -17,12 +19,14 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+@Log4j
 public class TestBase extends PageFactory {
 
     private static WebDriver driver;
     private static WebDriverWait wait;
     private static Pair<Properties, String> driverConfig = new Pair<>(new Properties(), "src/test/resources/properties/driver-config.properties");
     private static Pair<Properties, String> testConfig = new Pair<>(new Properties(), "src/test/resources/properties/test-data.properties");
+    private static Pair<Properties, String> log4j = new Pair<>(new Properties(), "src/test/resources/properties/log4j.properties");
 
     private static Properties getDriverProperties() {
         return driverConfig.getProperties();
@@ -37,8 +41,13 @@ public class TestBase extends PageFactory {
         return new WebDriverWait(getDriver(), timeOut);
     }
 
+
     public static void loadProperties() throws IOException {
-        PropertiesManager.load(driverConfig, testConfig);
+        PropertiesManager.load(driverConfig, testConfig, log4j);
+    }
+
+    public static void loadLogger(){
+        PropertyConfigurator.configure(log4j.getProperties());
     }
 
     public static WebDriver getDriver() {
@@ -57,10 +66,6 @@ public class TestBase extends PageFactory {
         wait = new WebDriverWait(driver, Long.valueOf(getDriverProperties().getProperty("explicitly_wait")));
     }
 
-    protected static WebElement findElementQuietly(By by) {
-        return findElementQuietly(by, Long.valueOf(getDriverProperties().getProperty("explicitly_wait")));
-    }
-
     protected static WebElement findElementQuietly(By by, long timeOut) {
         try {
             WebElement element = new WebDriverWait(driver, timeOut).until(ExpectedConditions.presenceOfElementLocated(by));
@@ -71,6 +76,7 @@ public class TestBase extends PageFactory {
     }
 
     protected static void waitForBeingReady() {
+        log.info("Waiting for page ready.");
         getWait().until((ExpectedCondition<Boolean>) wd ->
                 ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
     }

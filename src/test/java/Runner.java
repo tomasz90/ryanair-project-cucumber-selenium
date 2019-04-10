@@ -17,10 +17,12 @@ public class Runner {
     @BeforeClass
     public static void setUp() throws IOException {
         TestBase.loadProperties();
+        TestBase.loadLogger();
+
     }
 
     @AfterClass
     public static void tearDown(){
-        //getDriver().quit();
+        getDriver().quit();
     }
 }

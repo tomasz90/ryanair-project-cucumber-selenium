@@ -1,5 +1,6 @@
 package pageobjects;
 
+import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -8,6 +9,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+@Log4j
 public class ChooseOptionsPage extends TestBase {
 
     @FindBy(css = ".seat-map-header") private WebElement seatDialog;
@@ -26,12 +28,14 @@ public class ChooseOptionsPage extends TestBase {
     }
 
     public void ifPopUpDisplayedDismiss() {
+        log.info("If popup displayed, dismiss");
         if (popUpConfirmButton != null) {
             popUpConfirmButton.click();
         }
     }
 
     public void chooseRandomSeats(HashMap<String, Integer> passengersInfo) {
+        log.info("Choose random seats");
         getWait().until(ExpectedConditions.invisibilityOfAllElements(Arrays.asList(seatMapPrompt)));
         int paidSeats = passengersInfo.get("adults");
         int lastSeat = standardSeats.size()-1;
@@ -41,20 +45,24 @@ public class ChooseOptionsPage extends TestBase {
     }
 
     public void reviewSeats() {
+        log.info("Review seats");
         reviewSeatsButton.click();
     }
 
     public void confirmSeats() {
+        log.info("Confirm seats");
         getWait().until(ExpectedConditions.invisibilityOfAllElements(Arrays.asList(reviewSeatsButton)));
         confirmSeatsButton.click();
     }
 
     public void clickCheckout() {
+        log.info("Click checkout");
         getCustomWait(5).until(ExpectedConditions.invisibilityOfAllElements(Arrays.asList(confirmSeatTitle)));
         checkoutButton.click();
     }
 
     public void ifCarHireOptionDisplayedDismiss() {
+        log.info("If car hire popup displayed, dismiss");
         if (noThanksButton != null) {
             noThanksButton.click();
         }
