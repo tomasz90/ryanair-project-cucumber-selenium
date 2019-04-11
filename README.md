@@ -19,4 +19,6 @@ driver configuration, logger configuration, test data and output data.
 
 * During test every action is logged into console
 
+* All elements are located by @FindBy annotation, it is more neaty way of getDriver().findElement()...
+
 * After test is performed report is generated in cucumber-reports folder
