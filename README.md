@@ -16,3 +16,5 @@ To run test all you have to do is run "Runner.java" file.
 driver configuration, logger configuration, test data and output data.
 
 * I implemented simple mechanism to capture screenshot whenever test fails
+
+* During test every action is logged into console
