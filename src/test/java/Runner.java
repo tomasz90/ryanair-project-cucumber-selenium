@@ -1,11 +1,8 @@
 import cucumber.api.CucumberOptions;
-import cucumber.api.Scenario;
-import cucumber.api.java.After;
 import cucumber.api.junit.Cucumber;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import pageobjects.TestBase;
-import utilities.ScreenshotTaker;
 
 import java.io.IOException;
 

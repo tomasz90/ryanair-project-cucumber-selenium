@@ -15,11 +15,10 @@ import static pageobjects.TestBase.*;
 public class ScreenshotTaker {
     public static void take(Scenario scenario) throws IOException {
         if (scenario.isFailed()) {
-            SimpleDateFormat format = new SimpleDateFormat("dd-MM HH:MM:SS");
-            String name = format.format(new Date());
-
+            SimpleDateFormat format = new SimpleDateFormat("dd-MMM HH.MM.ss");
+            String fileName = format.format(new Date());
             File file = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(file, new File(getOutputProperties().getProperty("screenshot_path") +"fff.png"));
+            FileUtils.copyFile(file, new File(getOutputProperties().getProperty("screenshot_path") + fileName + ".png"));
         }
     }
 }
