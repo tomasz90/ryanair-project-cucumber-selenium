@@ -1,4 +1,4 @@
-# myproject
+# My ryanair project
 
 This mini project shows simple test scenario of booking flight on ryanair site.
 Test has to check if proper error message is displayed when user books flight with invalid payment data.
