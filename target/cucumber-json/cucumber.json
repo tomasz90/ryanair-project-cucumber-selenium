@@ -1,0 +1,158 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 3,
+        "name": "Testing invalid payment information",
+        "description": "",
+        "id": "testing-booking-process;testing-invalid-payment-information",
+        "after": [
+          {
+            "result": {
+              "duration": 923589,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.tearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 17257286540,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I navigate to home page and login into test account",
+            "match": {
+              "location": "MyStepdefs.iNavigateToHomePage()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 35691486,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "I should be logged in",
+            "match": {
+              "location": "MyStepdefs.iShouldBeLoggedIn()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 3143657774,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I perform searching for flight from DUB to SXF on 25-05-2019 for 2 adults and 1 child",
+            "match": {
+              "arguments": [
+                {
+                  "val": "DUB",
+                  "offset": 36
+                },
+                {
+                  "val": "SXF",
+                  "offset": 43
+                },
+                {
+                  "val": "25-05-2019",
+                  "offset": 50
+                },
+                {
+                  "val": "2",
+                  "offset": 65
+                },
+                {
+                  "val": "1",
+                  "offset": 78
+                }
+              ],
+              "location": "MyStepdefs.iPerformSearchingForFlightFromToOnForAdultsAndChild(String,String,String,int,int)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 37537566575,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I choose the following options: flight with standard fare, small bags, random seats",
+            "match": {
+              "location": "MyStepdefs.iChooseTheFollowingOptionsFlightWithStandardFareSmallBagsRandomSeats()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 4052482271,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I should be on checkout page",
+            "match": {
+              "location": "MyStepdefs.iShouldBeOnCheckoutPage()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 4350713753,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "I provide personal info and pay for booking with card details 5555 5555 5555 5557, 10/19 and 265",
+            "match": {
+              "arguments": [
+                {
+                  "val": "5555 5555 5555 5557",
+                  "offset": 62
+                },
+                {
+                  "val": "10",
+                  "offset": 83
+                },
+                {
+                  "val": "19",
+                  "offset": 86
+                },
+                {
+                  "val": "265",
+                  "offset": 93
+                }
+              ],
+              "location": "MyStepdefs.iPayForBookingWithCardDetails(String,String,String,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 4356011800,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "I should get payment declined message",
+            "match": {
+              "location": "MyStepdefs.iShouldGetPaymentDeclinedMessage()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "Testing booking process",
+    "description": "",
+    "id": "testing-booking-process",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/features/testing-booking-process.feature",
+    "tags": []
+  }
+]

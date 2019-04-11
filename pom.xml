@@ -77,5 +77,11 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports-cucumber4-adapter</artifactId>
+            <version>1.0.5</version>
+        </dependency>
+
     </dependencies>
 </project>
