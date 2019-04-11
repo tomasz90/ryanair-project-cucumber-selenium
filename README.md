@@ -18,3 +18,5 @@ driver configuration, logger configuration, test data and output data.
 * I implemented simple mechanism to capture screenshot whenever test fails
 
 * During test every action is logged into console
+
+* All elements are located by @FindBy annotation, it is more neaty way of getDriver().findElement()...
