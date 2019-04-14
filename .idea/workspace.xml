@@ -3,19 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="a1c6f3a3-085b-4208-827d-767dd15e98f3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefs/Hooks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefs/Hooks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pageobjects/CheckoutPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pageobjects/CheckoutPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pageobjects/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utilities/Data.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/stepdefs/MyStepdefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefs/MyStepdefs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/utilities/ScreenshotTaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utilities/ScreenshotTaker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/features/testing-booking-process.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/features/testing-booking-process.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/properties/driver-config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/properties/driver-config.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/cucumber-json/cucumber.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/cucumber-json/cucumber.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/cucumber-reports/Cucumber.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/cucumber-reports/Cucumber.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cucumber-reports/report.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/cucumber-reports/report.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/features/testing-booking-process.feature" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/features/testing-booking-process.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/properties/driver-config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/properties/driver-config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/stepdefs/Hooks.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/stepdefs/Hooks.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pageobjects/CheckoutPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pageobjects/CheckoutPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pageobjects/Data.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/stepdefs/MyStepdefs.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/stepdefs/MyStepdefs.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/utilities/ScreenshotTaker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/utilities/ScreenshotTaker.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -27,99 +22,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/stepdefs/MyStepdefs.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="67" selection-start-line="67" selection-end-line="67" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1493#1494#0" expanded="true" />
-                <element signature="e#1567#1568#0" expanded="true" />
-                <element signature="e#3170#3171#0" expanded="true" />
-                <element signature="e#3252#3253#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/pageobjects/ChooseOptionsPage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="66" selection-start-line="66" selection-end-line="66" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1309#1310#0" expanded="true" />
-                <element signature="e#1356#1357#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-core/4.2.6/cucumber-core-4.2.6.jar!/cucumber/runtime/Utils.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="32" selection-start-line="32" selection-end-line="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/pageobjects/ChooseFlightPage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="43" selection-start-line="43" selection-end-line="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-core/4.2.6/cucumber-core-4.2.6.jar!/cucumber/runner/PickleStepDefinitionMatch.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="59" selection-start-line="59" selection-end-line="59" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/resources/properties/driver-config.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/pageobjects/BagOptionsPage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="766">
-              <caret line="37" column="100" lean-forward="true" selection-start-line="37" selection-start-column="100" selection-end-line="37" selection-end-column="100" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/stepdefs/Hooks.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/resources/features/testing-booking-process.feature">
           <provider selected="true" editor-type-id="text-editor">
@@ -130,13 +32,60 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/utilities/ScreenshotTaker.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/pageobjects/ChooseOptionsPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+            <state relative-caret-position="154">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/pageobjects/BagOptionsPage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1408">
+              <caret line="64" column="16" selection-start-line="64" selection-start-column="16" selection-end-line="64" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/pageobjects/CheckoutPage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="71" column="16" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/stepdefs/MyStepdefs.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="21" column="98" lean-forward="true" selection-start-line="21" selection-start-column="98" selection-end-line="21" selection-end-column="98" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1493#1494#0" expanded="true" />
+                <element signature="e#1567#1568#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/utilities/Data.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="110">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -147,6 +96,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -202,26 +152,28 @@
         <option value="$PROJECT_DIR$/src/test/java/utilities/CustomWebElement.java" />
         <option value="$PROJECT_DIR$/src/test/java/pageobjects/HomePage.java" />
         <option value="$PROJECT_DIR$/src/test/java/pageobjects/LoginPopUp.java" />
-        <option value="$PROJECT_DIR$/src/test/java/pageobjects/ChooseOptionsPage.java" />
         <option value="$PROJECT_DIR$/src/test/java/pageobjects/ChooseFlightPage.java" />
-        <option value="$PROJECT_DIR$/src/test/java/pageobjects/CheckoutPage.java" />
         <option value="$PROJECT_DIR$/src/test/java/utilities/JUnitListener.java" />
         <option value="$PROJECT_DIR$/src/test/java/stepdefs/AbstractStepDefs.java" />
         <option value="$PROJECT_DIR$/src/test/java/stepdefs/GeneralStepDefs.java" />
         <option value="$PROJECT_DIR$/src/test/resources/properties/log4j.properties" />
-        <option value="$PROJECT_DIR$/src/test/java/pageobjects/TestBase.java" />
         <option value="$PROJECT_DIR$/src/test/java/utilities/ScreenshotTaker.java" />
-        <option value="$PROJECT_DIR$/src/test/resources/properties/test-data.properties" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/resources/properties/test-output.properties" />
         <option value="$PROJECT_DIR$/src/test/java/Runner.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/test/resources/properties/driver-config.properties" />
         <option value="$PROJECT_DIR$/src/test/resources/features/testing-booking-process.feature" />
-        <option value="$PROJECT_DIR$/src/test/java/stepdefs/MyStepdefs.java" />
-        <option value="$PROJECT_DIR$/src/test/java/pageobjects/BagOptionsPage.java" />
         <option value="$PROJECT_DIR$/src/test/java/Hooks.java" />
         <option value="$PROJECT_DIR$/src/test/java/stepdefs/Hooks.java" />
+        <option value="$PROJECT_DIR$/src/test/java/pageobjects/BagOptionsPage.java" />
+        <option value="$PROJECT_DIR$/src/test/java/pageobjects/ChooseOptionsPage.java" />
+        <option value="$PROJECT_DIR$/src/test/resources/properties/test-data.properties" />
+        <option value="$PROJECT_DIR$/src/test/java/pageobjects/TestBase.java" />
+        <option value="$PROJECT_DIR$/src/test/java/pageobjects/CheckoutPage.java" />
+        <option value="$PROJECT_DIR$/src/test/java/pageobjects/Data.java" />
+        <option value="$PROJECT_DIR$/src/test/java/utilities/Data.java" />
+        <option value="$PROJECT_DIR$/src/test/java/stepdefs/MyStepdefs.java" />
       </list>
     </option>
   </component>
@@ -282,6 +234,14 @@
               <item name="ryanairproject" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="pageobjects" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ryanairproject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ryanairproject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -327,7 +287,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555266810326" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555275307923" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/java/stepdefs" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.annotationProcessors" />
   </component>
@@ -378,7 +338,7 @@
       <module name="ryanairproject" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="pageobjects.*" />
+          <option name="PATTERN" value="utilities.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -407,7 +367,7 @@
       <module name="ryanairproject" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="pageobjects.*" />
+          <option name="PATTERN" value="utilities.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -448,34 +408,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Runner - 2019.04.14 at 20h 05m 36s.xml">
+    <history-entry file="Runner - 2019.04.14 at 21h 47m 05s.xml">
       <configuration name="Runner" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Runner - 2019.04.14 at 20h 08m 04s.xml">
+    <history-entry file="Runner - 2019.04.14 at 21h 55m 36s.xml">
       <configuration name="Runner" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Runner - 2019.04.14 at 20h 13m 06s.xml">
+    <history-entry file="Runner - 2019.04.14 at 21h 57m 36s.xml">
       <configuration name="Runner" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Runner - 2019.04.14 at 20h 16m 13s.xml">
+    <history-entry file="Runner - 2019.04.14 at 22h 09m 56s.xml">
       <configuration name="Runner" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Runner - 2019.04.14 at 20h 21m 25s.xml">
+    <history-entry file="Runner - 2019.04.14 at 22h 11m 18s.xml">
       <configuration name="Runner" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Runner - 2019.04.14 at 20h 24m 32s.xml">
+    <history-entry file="Runner - 2019.04.14 at 22h 16m 31s.xml">
       <configuration name="Runner" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Runner - 2019.04.14 at 20h 25m 55s.xml">
+    <history-entry file="Runner - 2019.04.14 at 22h 32m 47s.xml">
       <configuration name="Runner" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Runner - 2019.04.14 at 20h 28m 10s.xml">
+    <history-entry file="Runner - 2019.04.14 at 22h 39m 07s.xml">
       <configuration name="Runner" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Runner - 2019.04.14 at 20h 30m 12s.xml">
+    <history-entry file="Runner - 2019.04.14 at 22h 49m 09s.xml">
       <configuration name="Runner" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Runner - 2019.04.14 at 20h 31m 37s.xml">
+    <history-entry file="Runner - 2019.04.14 at 22h 52m 52s.xml">
       <configuration name="Runner" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -492,7 +452,7 @@
     <frame x="-7" y="-7" width="2062" height="1126" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16233766" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16233766" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -501,8 +461,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.2193159" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.38933602" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.60060364" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.38933602" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.250503" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32997987" />
@@ -551,17 +511,11 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/stepdefs/Hooks.java</url>
           <line>10</line>
           <properties />
           <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/stepdefs/MyStepdefs.java</url>
-          <line>58</line>
-          <properties />
-          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -618,7 +572,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/pageobjects/Test.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-api/2.53.1/selenium-api-2.53.1.jar!/org/openqa/selenium/WebElement.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -746,16 +699,6 @@
     <entry file="file://$PROJECT_DIR$/testoutput/image.png" />
     <entry file="file://$PROJECT_DIR$/testoutput/fff.png" />
     <entry file="file://$PROJECT_DIR$/testoutput/11-kwi 02.04.37.png" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/pageobjects/CheckoutPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1452">
-          <caret line="116" selection-start-line="116" selection-end-line="116" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testoutput/11-kwi 03.04.07.png" />
     <entry file="file://$PROJECT_DIR$/src/test/java/utilities/PropertiesManager.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -768,9 +711,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/resources/properties/log4j.properties">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/properties/test-data.properties">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/testoutput/11-kwi 10.04.27.png" />
@@ -795,28 +735,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/pageobjects/TestBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1298">
-          <caret line="88" column="1" selection-start-line="88" selection-start-column="1" selection-end-line="88" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1449#1450#0" expanded="true" />
-            <element signature="e#1500#1501#0" expanded="true" />
-            <element signature="e#1552#1553#0" expanded="true" />
-            <element signature="e#1601#1602#0" expanded="true" />
-            <element signature="e#1654#1655#0" expanded="true" />
-            <element signature="e#1699#1700#0" expanded="true" />
-            <element signature="e#1743#1744#0" expanded="true" />
-            <element signature="e#1770#1771#0" expanded="true" />
-            <element signature="e#1832#1833#0" expanded="true" />
-            <element signature="e#1894#1895#0" expanded="true" />
-            <element signature="e#2075#2076#0" expanded="true" />
-            <element signature="e#2144#2145#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/target/cucumber-reports/11-kwi 17.04.26.png" />
     <entry file="file://$PROJECT_DIR$/src/test/java/Runner.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -835,27 +753,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/utilities/ScreenshotTaker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/resources/properties/driver-config.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/features/testing-booking-process.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="62" selection-start-line="5" selection-start-column="62" selection-end-line="5" selection-end-column="62" />
         </state>
       </provider>
     </entry>
@@ -883,39 +784,97 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/pageobjects/ChooseOptionsPage.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/stepdefs/Hooks.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
+        <state relative-caret-position="63">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/utilities/ScreenshotTaker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1309#1310#0" expanded="true" />
-            <element signature="e#1356#1357#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-core/4.2.6/cucumber-core-4.2.6.jar!/cucumber/runtime/Utils.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        <state relative-caret-position="329">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/pageobjects/TestBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="94" selection-start-line="94" selection-end-line="94" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1449#1450#0" expanded="true" />
+            <element signature="e#1500#1501#0" expanded="true" />
+            <element signature="e#1552#1553#0" expanded="true" />
+            <element signature="e#1601#1602#0" expanded="true" />
+            <element signature="e#1654#1655#0" expanded="true" />
+            <element signature="e#1699#1700#0" expanded="true" />
+            <element signature="e#1743#1744#0" expanded="true" />
+            <element signature="e#1770#1771#0" expanded="true" />
+            <element signature="e#1832#1833#0" expanded="true" />
+            <element signature="e#1894#1895#0" expanded="true" />
+            <element signature="e#2075#2076#0" expanded="true" />
+            <element signature="e#2144#2145#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/pageobjects/BagOptionsPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="766">
-          <caret line="37" column="100" lean-forward="true" selection-start-line="37" selection-start-column="100" selection-end-line="37" selection-end-column="100" />
+        <state relative-caret-position="1408">
+          <caret line="64" column="16" selection-start-line="64" selection-start-column="16" selection-end-line="64" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/stepdefs/Hooks.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/pageobjects/ChooseOptionsPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state relative-caret-position="154">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/properties/test-data.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="28" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/features/testing-booking-process.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="62" selection-start-line="5" selection-start-column="62" selection-end-line="5" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/utilities/Data.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/pageobjects/CheckoutPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="71" column="16" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -924,14 +883,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/stepdefs/MyStepdefs.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="67" selection-start-line="67" selection-end-line="67" />
+        <state relative-caret-position="330">
+          <caret line="21" column="98" lean-forward="true" selection-start-line="21" selection-start-column="98" selection-end-line="21" selection-end-column="98" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1493#1494#0" expanded="true" />
             <element signature="e#1567#1568#0" expanded="true" />
-            <element signature="e#3170#3171#0" expanded="true" />
-            <element signature="e#3252#3253#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -16,6 +16,9 @@ import utilities.Pair;
 import utilities.PropertiesManager;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -85,5 +88,18 @@ public class TestBase extends PageFactory {
         log.info("Waiting for page ready.");
         getWait().until((ExpectedCondition<Boolean>) wd ->
                 ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
+    }
+
+    public static String getRandomData(String key) {
+        List<String> dataList = new ArrayList<>();
+        String data = getTestProperties().getProperty(key);
+        while (data.contains(",")) {
+            int commaPlace = data.indexOf(",");
+            dataList.add(data.substring(0, commaPlace));
+            data = data.substring(commaPlace + 1);
+        }
+        dataList.add(data);
+        Collections.shuffle(dataList);
+        return dataList.get(0);
     }
 }

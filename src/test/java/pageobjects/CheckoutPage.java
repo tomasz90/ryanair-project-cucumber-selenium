@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import utilities.Data;
 
 import java.util.*;
 
@@ -56,11 +57,11 @@ public class CheckoutPage extends TestBase {
         return passengerForm.isDisplayed();
     }
 
-    public void providePersonalData(HashMap<String, Integer> map) {
+    public void providePersonalData(Data firstName, Data lastName) {
         log.info("Provide personal data");
         for (int i = 0; i < firstNames.size(); i++) {
-            firstNames.get(i).sendKeys(getRandomData("passenger_first_names"));
-            lastNames.get(i).sendKeys(getRandomData("passenger_last_names"));
+            firstNames.get(i).sendKeys(firstName.getData());
+            lastNames.get(i).sendKeys(lastName.getData());
         }
         for (int i = 0; i < titleDDMs.size(); i++) {
             Select titleDDM = new Select(titleDDMs.get(i));
@@ -68,20 +69,20 @@ public class CheckoutPage extends TestBase {
         }
     }
 
-    public void providePhoneData() {
+    public void providePhoneData(Data phoneCountry, Data phoneNo) {
         log.info("Provide phone data");
         Select ddm = new Select(countryPhoneDDM);
-        ddm.selectByVisibleText(getRandomData("phone_country"));
-        phoneInput.sendKeys(getRandomData("phone_no"));
+        ddm.selectByVisibleText(phoneCountry.getData());
+        phoneInput.sendKeys(phoneNo.getData());
     }
 
-    public void provideAddressData() {
+    public void provideAddressData(Data address1, Data city, Data zipCode, Data country) {
         log.info("Provide address data");
-        address1Input.sendKeys(getRandomData("address_1"));
-        cityInput.sendKeys(getRandomData("city"));
-        zipInput.sendKeys(getRandomData("zip_code"));
+        address1Input.sendKeys(address1.getData());
+        cityInput.sendKeys(city.getData());
+        zipInput.sendKeys(zipCode.getData());
         Select ddm = new Select(countryDDM);
-        ddm.selectByVisibleText(getRandomData("country"));
+        ddm.selectByVisibleText(country.getData());
 
     }
 
@@ -113,18 +114,5 @@ public class CheckoutPage extends TestBase {
         log.info("Get error message");
         getCustomWait(10).until(ExpectedConditions.invisibilityOfAllElements(Arrays.asList(processingAnimation)));
         return errorMessageText.getText();
-    }
-
-    private String getRandomData(String key) {
-        List<String> dataList = new ArrayList<>();
-        String data = getTestProperties().getProperty(key);
-        while (data.contains(",")) {
-            int commaPlace = data.indexOf(",");
-            dataList.add(data.substring(0, commaPlace));
-            data = data.substring(commaPlace + 1);
-        }
-        dataList.add(data);
-        Collections.shuffle(dataList);
-        return dataList.get(0);
     }
 }

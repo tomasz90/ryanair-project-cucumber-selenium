@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite failures="1" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="91.060839">
+<testcase classname="Testing booking process" name="Testing invalid payment information" time="91.060839">
+<failure message="org.openqa.selenium.NoSuchElementException: Cannot locate element with text: United Kingdom&#10;For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'&#10;System info: host: 'DESKTOP-NPT9O2N', ip: '169.254.179.76', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_201'&#10;Driver info: driver.version: unknown&#13;&#10;&#9;at org.openqa.selenium.support.ui.Select.selectByVisibleText(Select.java:150)&#13;&#10;&#9;at pageobjects.CheckoutPage.providePhoneData(CheckoutPage.java:75)&#13;&#10;&#9;at stepdefs.MyStepdefs.iPayForBookingWithCardDetails(MyStepdefs.java:87)&#13;&#10;&#9;at ✽.I provide personal info and pay for booking with card details 5555 5555 5555 5557, 10/19 and 265(file:src/test/resources/features/testing-booking-process.feature:9)&#13;&#10;"><![CDATA[Given I navigate to home page and login into test account...................passed
+Then I should be logged in..................................................passed
+When I perform searching for flight from DUB to SXF on 29-05-2019 for 2 adults and 1 child.passed
+And I choose the following options: flight with standard fare, small bags, random seats.passed
+Then I should be on checkout page...........................................passed
+When I provide personal info and pay for booking with card details 5555 5555 5555 5557, 10/19 and 265.failed
+Then I should get payment declined message..................................skipped
+
+StackTrace:
+org.openqa.selenium.NoSuchElementException: Cannot locate element with text: United Kingdom
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
+System info: host: 'DESKTOP-NPT9O2N', ip: '169.254.179.76', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_201'
+Driver info: driver.version: unknown
+	at org.openqa.selenium.support.ui.Select.selectByVisibleText(Select.java:150)
+	at pageobjects.CheckoutPage.providePhoneData(CheckoutPage.java:75)
+	at stepdefs.MyStepdefs.iPayForBookingWithCardDetails(MyStepdefs.java:87)
+	at ✽.I provide personal info and pay for booking with card details 5555 5555 5555 5557, 10/19 and 265(file:src/test/resources/features/testing-booking-process.feature:9)
+]]></failure>
+</testcase>
+</testsuite>

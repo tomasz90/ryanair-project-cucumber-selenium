@@ -5,6 +5,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.support.PageFactory;
 import pageobjects.*;
+import utilities.Data;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -55,11 +56,10 @@ public class MyStepdefs {
         chooseFlightPage.chooseDisplayedFlight();
         chooseFlightPage.chooseStandardFare();
         chooseFlightPage.clickContinue();
-        chooseOptionsPage.ifPopUpDisplayedDismiss();
-        chooseOptionsPage.chooseRandomSeats(homePage.getPassengerInfo());
-        chooseOptionsPage.reviewSeats();
-        chooseOptionsPage.confirmSeats();
-        chooseOptionsPage.clickCheckout();
+        bagOptionsPage.ifPopUpDisplayedDismiss();
+        bagOptionsPage.chooseRandomSeats(homePage.getPassengerInfo());
+        bagOptionsPage.reviewSeats();
+        bagOptionsPage.confirmSeats();
         bagOptionsPage.chooseSmallBag();
         bagOptionsPage.ifPopUpDisplayedChooseTheSameForAll();
         bagOptionsPage.clickContinue();
@@ -74,10 +74,19 @@ public class MyStepdefs {
 
     @And("I provide personal info and pay for booking with card details ([0-9]+ [0-9]+ [0-9]+ [0-9]+), (\\d\\d)/(\\d\\d) and (\\d\\d\\d)")
     public void iPayForBookingWithCardDetails(String ccNo, String expiryMonth, String expiryYear, String cvv) {
-        checkoutPage.providePersonalData(homePage.getPassengerInfo());
-        checkoutPage.providePhoneData();
+        Data firstName = () -> TestBase.getRandomData("passenger_first_names");
+        Data lastName = () -> TestBase.getRandomData("passenger_last_names");
+        Data phoneCountry = () -> TestBase.getRandomData("phone_country");
+        Data phoneNo = () -> TestBase.getRandomData("phone_no");
+        Data address = () -> TestBase.getRandomData("address_1");
+        Data city = () -> TestBase.getRandomData("city");
+        Data zipCode = () -> TestBase.getRandomData("zip_code");
+        Data country = () -> TestBase.getRandomData("country");
+
+        checkoutPage.providePersonalData(firstName, lastName);
+        checkoutPage.providePhoneData(phoneCountry, phoneNo);
         checkoutPage.provideCCData(ccNo, expiryMonth, expiryYear, cvv);
-        checkoutPage.provideAddressData();
+        checkoutPage.provideAddressData(address, city, zipCode, country);
         checkoutPage.acceptTerms();
         checkoutPage.clickPayNow();
     }
@@ -86,4 +95,5 @@ public class MyStepdefs {
     public void iShouldGetPaymentDeclinedMessage() {
         assertEquals("Payment error message was different than expected.", getTestProperties().getProperty("payment_error_message"), checkoutPage.getErrorMessage());
     }
+
 }
