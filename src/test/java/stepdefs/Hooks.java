@@ -10,6 +10,6 @@ public class Hooks {
 
     @After
     public void tearDown(Scenario scenario) throws IOException {
-        ScreenshotTaker.take(scenario);
+        ScreenshotTaker.takeIfFailed(scenario);
     }
 }

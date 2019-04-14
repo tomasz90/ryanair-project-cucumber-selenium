@@ -13,7 +13,7 @@ import java.util.Date;
 import static pageobjects.TestBase.*;
 
 public class ScreenshotTaker {
-    public static void take(Scenario scenario) throws IOException {
+    public static void takeIfFailed(Scenario scenario) throws IOException {
         if (scenario.isFailed()) {
             SimpleDateFormat format = new SimpleDateFormat("dd-MMM HH.MM.ss");
             String fileName = format.format(new Date());

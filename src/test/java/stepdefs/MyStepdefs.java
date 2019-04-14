@@ -55,13 +55,14 @@ public class MyStepdefs {
         chooseFlightPage.chooseDisplayedFlight();
         chooseFlightPage.chooseStandardFare();
         chooseFlightPage.clickContinue();
-        bagOptionsPage.chooseSmallBag();
-        bagOptionsPage.ifPopUpDisplayedChooseTheSameForAll();
-        bagOptionsPage.clickContinue();
         chooseOptionsPage.ifPopUpDisplayedDismiss();
         chooseOptionsPage.chooseRandomSeats(homePage.getPassengerInfo());
         chooseOptionsPage.reviewSeats();
         chooseOptionsPage.confirmSeats();
+        chooseOptionsPage.clickCheckout();
+        bagOptionsPage.chooseSmallBag();
+        bagOptionsPage.ifPopUpDisplayedChooseTheSameForAll();
+        bagOptionsPage.clickContinue();
         chooseOptionsPage.clickCheckout();
         chooseOptionsPage.ifCarHireOptionDisplayedDismiss();
     }
