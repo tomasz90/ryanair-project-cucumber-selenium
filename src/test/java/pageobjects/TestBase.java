@@ -23,7 +23,7 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 @Log4j
-public class TestBase extends PageFactory {
+public abstract class TestBase extends PageFactory {
 
     private static WebDriver driver;
     private static WebDriverWait wait;
@@ -31,6 +31,9 @@ public class TestBase extends PageFactory {
     private static Pair<Properties, String> testConfig = new Pair<>(new Properties(), "src/test/resources/properties/test-data.properties");
     private static Pair<Properties, String> log4j = new Pair<>(new Properties(), "src/test/resources/properties/log4j.properties");
     private static Pair<Properties, String> output = new Pair<>(new Properties(), "src/test/resources/properties/test-output.properties");
+
+
+    public abstract boolean isLoaded();
 
     private static Properties getDriverProperties() {
         return driverConfig.getProperties();
@@ -75,7 +78,7 @@ public class TestBase extends PageFactory {
         wait = new WebDriverWait(driver, Long.valueOf(getDriverProperties().getProperty("explicitly_wait")));
     }
 
-    protected static WebElement findElementQuietly(By by, long timeOut) {
+    static WebElement findElementQuietly(By by, long timeOut) {
         try {
             WebElement element = new WebDriverWait(driver, timeOut).until(ExpectedConditions.presenceOfElementLocated(by));
             return element;
@@ -84,13 +87,18 @@ public class TestBase extends PageFactory {
         }
     }
 
+    static boolean isPresent(By by) {
+        return findElementQuietly(by, 2) != null;
+    }
+
+
     protected static void waitForBeingReady() {
         log.info("Waiting for page ready.");
         getWait().until((ExpectedCondition<Boolean>) wd ->
                 ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
     }
 
-    public static String getRandomData(String key) {
+    public static String getRandom(String key) {
         List<String> dataList = new ArrayList<>();
         String data = getTestProperties().getProperty(key);
         while (data.contains(",")) {

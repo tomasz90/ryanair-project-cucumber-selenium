@@ -4,10 +4,15 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.support.PageFactory;
-import pageobjects.*;
-import utilities.Data;
+import pageobjects.CartPage;
+import pageobjects.CreateAccountPage;
+import pageobjects.HomePage;
+import pageobjects.MyAccountPage;
+import pageobjects.ProductsPage;
+import pageobjects.SignInPage;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static pageobjects.TestBase.getDriver;
 import static pageobjects.TestBase.getTestProperties;
@@ -15,85 +20,104 @@ import static pageobjects.TestBase.getTestProperties;
 public class MyStepdefs {
 
     private HomePage homePage = PageFactory.initElements(getDriver(), HomePage.class);
-    private LoginPopUp loginPopUp = PageFactory.initElements(getDriver(), LoginPopUp.class);
-    private ChooseFlightPage chooseFlightPage = PageFactory.initElements(getDriver(), ChooseFlightPage.class);
-    private BagOptionsPage bagOptionsPage = PageFactory.initElements(getDriver(), BagOptionsPage.class);
-    private ChooseOptionsPage chooseOptionsPage = PageFactory.initElements(getDriver(), ChooseOptionsPage.class);
-    private CheckoutPage checkoutPage = PageFactory.initElements(getDriver(), CheckoutPage.class);
 
-    @When("I navigate to home page and login into test account")
-    public void iNavigateToHomePage() {
-        homePage.navigate();
-        homePage.ifCookiePopUpDisplayedDismissIt();
-        homePage.clickLogin();
-        loginPopUp.enterEmail(getTestProperties().getProperty("email"));
-        loginPopUp.enterPassword(getTestProperties().getProperty("password"));
-        loginPopUp.submit();
+    private SignInPage signInPage = PageFactory.initElements(getDriver(), SignInPage.class);
+
+    private CreateAccountPage createAccountPage = PageFactory.initElements(getDriver(), CreateAccountPage.class);
+
+    private MyAccountPage myAccountPage = PageFactory.initElements(getDriver(), MyAccountPage.class);
+
+    private ProductsPage productsPage = PageFactory.initElements(getDriver(), ProductsPage.class);
+
+    private CartPage cartPage = PageFactory.initElements(getDriver(), CartPage.class);
+
+    private String validEmail = getTestProperties().getProperty("valid_email");
+
+    private String inValidPassword = getTestProperties().getProperty("invalid_password");
+
+    private String validPassword = getTestProperties().getProperty("valid_password");
+
+    @When("^(I am logged in|I try to login with valid data)$") public void iTryToLoginWithValidData(String s) {
+        login(validEmail, validPassword);
     }
 
-    @Then("I should be logged in")
-    public void iShouldBeLoggedIn() {
-        assertTrue("User wasn't logged in", homePage.isLoggedIn());
+    @When("I try to login with invalid data") public void iTryToLoginWithInvalidData() {
+        login(validEmail, inValidPassword);
     }
 
-    @And("I perform searching for flight from (.+) to (.+) on ([0,1,2,3]\\d-[0-1]\\d-[2][0][1,2][9,0,1]) for (\\d) adults and (\\d) child")
-    public void iPerformSearchingForFlightFromToOnForAdultsAndChild(String from, String to, String on, int adults, int children) throws Exception {
-        homePage.savePassengerInfo(adults, 0, children, 0);
-        homePage.clickOneWay();
-        homePage.setFrom(from);
-        homePage.setTo(to);
-        homePage.setDate(on);
-        homePage.clickPassengerDDM();
-        homePage.setAdults(String.valueOf(adults));
-        homePage.setChild(String.valueOf(children));
-        homePage.clickPassengerDDM();
-        homePage.acceptTermsOfUse();
-        homePage.clickLetsFly();
+    @Then("^I (should|shouldn't) be logged in$") public void iShouldBeLoggedIn(String should) {
+        assertShould(should, homePage.isLoggedIn());
     }
 
-    @And("I choose the following options: flight with standard fare, small bags, random seats")
-    public void iChooseTheFollowingOptionsFlightWithStandardFareSmallBagsRandomSeats() {
-        chooseFlightPage.chooseDisplayedFlight();
-        chooseFlightPage.chooseStandardFare();
-        chooseFlightPage.clickContinue();
-        bagOptionsPage.ifPopUpDisplayedDismiss();
-        bagOptionsPage.chooseRandomSeats(homePage.getPassengerInfo());
-        bagOptionsPage.reviewSeats();
-        bagOptionsPage.confirmSeats();
-        bagOptionsPage.chooseSmallBag();
-        bagOptionsPage.ifPopUpDisplayedChooseTheSameForAll();
-        bagOptionsPage.clickContinue();
-        chooseOptionsPage.clickCheckout();
-        chooseOptionsPage.ifCarHireOptionDisplayedDismiss();
+    private void login(String email, String password) {
+        homePage.clickSignIn();
+        assertTrue(signInPage.isLoaded());
+        signInPage.enterEmail(email);
+        signInPage.enterPassword(password);
+        signInPage.submit();
     }
 
-    @Then("I should be on checkout page")
-    public void iShouldBeOnCheckoutPage() {
-        assertTrue("Checkout page wasn't loaded", checkoutPage.isLoaded());
+    @And("I should see error message: {string}") public void iShouldSeeErrorMessage(String message) {
+        assertEquals(message, signInPage.getErrorMessage());
     }
 
-    @And("I provide personal info and pay for booking with card details ([0-9]+ [0-9]+ [0-9]+ [0-9]+), (\\d\\d)/(\\d\\d) and (\\d\\d\\d)")
-    public void iPayForBookingWithCardDetails(String ccNo, String expiryMonth, String expiryYear, String cvv) {
-        Data firstName = () -> TestBase.getRandomData("passenger_first_names");
-        Data lastName = () -> TestBase.getRandomData("passenger_last_names");
-        Data phoneCountry = () -> TestBase.getRandomData("phone_country");
-        Data phoneNo = () -> TestBase.getRandomData("phone_no");
-        Data address = () -> TestBase.getRandomData("address_1");
-        Data city = () -> TestBase.getRandomData("city");
-        Data zipCode = () -> TestBase.getRandomData("zip_code");
-        Data country = () -> TestBase.getRandomData("country");
-
-        checkoutPage.providePersonalData(firstName, lastName);
-        checkoutPage.providePhoneData(phoneCountry, phoneNo);
-        checkoutPage.provideCCData(ccNo, expiryMonth, expiryYear, cvv);
-        checkoutPage.provideAddressData(address, city, zipCode, country);
-        checkoutPage.acceptTerms();
-        checkoutPage.clickPayNow();
+    @When("I start creating account") public void iStartCreatingAccount() {
+        homePage.clickSignIn();
+        assertTrue(signInPage.isLoaded());
+        signInPage.enterNewEmail();
+        signInPage.createAccount();
     }
 
-    @Then("I should get payment declined message")
-    public void iShouldGetPaymentDeclinedMessage() {
-        assertEquals("Payment error message was different than expected.", getTestProperties().getProperty("payment_error_message"), checkoutPage.getErrorMessage());
+    @And("I register user using valid data") public void iRegisterUserUsingValidData() {
+        assertTrue(createAccountPage.isLoaded());
+        createAccountPage.enterFirstName();
+        createAccountPage.enterLastName();
+        createAccountPage.enterPassword();
+        createAccountPage.enterAddress();
+        createAccountPage.enterCity();
+        createAccountPage.chooseState();
+        createAccountPage.enterZip();
+        createAccountPage.enterPhone();
+        createAccountPage.clickRegister();
     }
 
+    @Then("I should have registered account") public void iShouldHaveRegisteredAccount() {
+        assertTrue(myAccountPage.isLoaded());
+    }
+
+    @When("^I add any product from (women|dresses|t-shirts) section$") public void iAddAnyProductFormWomanSection(String section) {
+        homePage.goToSection(section);
+        assertTrue(productsPage.isLoaded());
+        productsPage.addToCart();
+    }
+
+    @And("I start checkout process") public void iStartCheckoutProcess() {
+        productsPage.proceedCheckout();
+        assertTrue(cartPage.isLoaded());
+        cartPage.proceedCheckout();
+        cartPage.proceedCheckout();
+        cartPage.agreeTermsOfService();
+        cartPage.proceedCheckout();
+    }
+
+    @And("^I chose payment as (bankwire|cheque)$") public void iChosePaymentAsCheck(String payment) {
+        cartPage.chosePayment(payment);
+        cartPage.proceedCheckout();
+    }
+
+    @Then("I should complete order") public void iShouldCompleteOrder() {
+        assertTrue(cartPage.isOrderComplete());
+    }
+
+    private void assertShould(String should, boolean condition) {
+        switch (should) {
+            case "should":
+                assertTrue("Condition should be fulfilled, but it wasn't", condition );
+                return;
+            case "shouldn't":
+                assertFalse("Condition shouldn't be fulfilled, but it was", condition);
+                return;
+        }
+        throw new IllegalArgumentException("Given parameter was invalid. Method should pass only should/shouldn't keywords.");
+    }
 }
